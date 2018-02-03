@@ -12,6 +12,6 @@
 #include <unistd.h>
 
 char **create_map(int size);
-void put_bars(char *line, int index);
+char *put_bars(char *line, int len, int start, int stop);
 
 #endif
