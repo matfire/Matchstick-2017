@@ -10,7 +10,8 @@
 int main(int ac, char **av)
 {
 	char **map;
-	if (ac != 2)
+
+	if (ac != 3 || check_values(av))
 		return (84);
 	map = create_map(my_getnbr(av[1]));
 	print_board(map);

@@ -7,7 +7,7 @@
 
 #include "stick.h"
 
-char *fill_borders(char *line, int len)
+char *fill_borders(int len)
 {
 	char *res;
 
@@ -20,7 +20,7 @@ char *fill_borders(char *line, int len)
 	return (res);
 }
 
-char *put_bars(char *line, int len, int start, int stop)
+char *put_bars(int len, int start, int stop)
 {
 	char *res;
 
@@ -59,7 +59,7 @@ char **create_map(int size)
 	result[size + 3] = NULL;
 	result[0] = fill_line(total_length);
 	for (int i = 1; i < size + 1; i++) {
-		result[i] = put_bars(result[i], total_length, start, stop);
+		result[i] = put_bars(total_length, start, stop);
 		start--;
 		stop++;
 	}

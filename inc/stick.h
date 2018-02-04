@@ -12,8 +12,9 @@
 #include <unistd.h>
 
 int my_getnbr(char *str);
+int check_values(char **av);
 char **create_map(int size);
-char *put_bars(char *line, int len, int start, int stop);
+char *put_bars(int len, int start, int stop);
 void print_board(char **map);
-
+void my_putstr(char *str);
 #endif

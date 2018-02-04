@@ -9,6 +9,7 @@ SRC	=		src/main.c \
 			src/board.c \
 			src/get_next_line.c \
 			src/utils.c \
+			src/errors.c \
 			src/my_getnbr.c
 
 OBJ	=	$(SRC:.c=.o)
