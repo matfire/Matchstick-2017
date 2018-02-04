@@ -13,5 +13,14 @@ int main(int ac, char **av)
 	if (ac != 2)
 		return (84);
 	map = create_map(my_getnbr(av[1]));
+	print_board(map);
+	/*while (1) {
+	player_turn(map);
+	if (check(map))
+		return (2);
+	ai_turn(map);
+	if (check(map))
+		return (1);
+	}*/
 	return (0);
 }

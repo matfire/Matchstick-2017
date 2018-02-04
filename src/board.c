@@ -29,6 +29,8 @@ char *put_bars(char *line, int len, int start, int stop)
 	for (int i = 0; i < len + 1; i++) {
 		if (i >= start && i <= stop)
 			res[i + 1] = '|';
+		else
+			res[i + 1] = ' ';
 	}
 	res[len + 1] = '*';
 	res[len + 2] = '\0';
@@ -52,6 +54,7 @@ char **create_map(int size)
 	int total_length = 1 + (2 * (size - 1));
 	int start = total_length / 2;
 	int stop = start;
+
 	result = malloc(sizeof(char *) * (size + 4));
 	result[size + 3] = NULL;
 	result[0] = fill_line(total_length);
@@ -61,9 +64,13 @@ char **create_map(int size)
 		stop++;
 	}
 	result[size + 1] = fill_line(total_length);
-	for (int i = 0; i < size + 2; i++) {
-		my_putstr(result[i]);
+	return (result);
+}
+
+void print_board(char **map)
+{
+	for (int i = 0; map[i] != NULL; i++) {
+		my_putstr(map[i]);
 		write(1, "\n", 1);
 	}
-	return (result);
 }
