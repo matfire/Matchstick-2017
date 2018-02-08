@@ -7,19 +7,16 @@
 
 #include "stick.h"
 
-char *fill_borders(int len)
+int check(char **map)
 {
-	char *res;
-
-	res = malloc(sizeof(char) * (len + 3));
-	res[0] = '*';
-	for (int i = 1; i < len + 1; i++)
-		res[i] = ' ';
-	res[len + 1] = '*';
-	res[len + 2] = '\0';
-	return (res);
+	for (int i = 0; map[i] != NULL; i++) {
+		for (int y = 0; map[i][y] != '\0'; y++) {
+			if (map[i][y] == '|')
+				return (0);
+		}
+	}
+	return (1);
 }
-
 char *put_bars(int len, int start, int stop)
 {
 	char *res;

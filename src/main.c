@@ -6,6 +6,7 @@
 */
 
 #include "stick.h"
+#include "get_next_line.h"
 
 int main(int ac, char **av)
 {
@@ -15,13 +16,13 @@ int main(int ac, char **av)
 		return (84);
 	map = create_map(my_getnbr(av[1]));
 	print_board(map);
-	/*while (1) {
-	player_turn(map);
+	while (1) {
+	player_turn(map, my_getnbr(av[2]));
 	if (check(map))
 		return (2);
-	ai_turn(map);
+	//ai_turn(map);
 	if (check(map))
 		return (1);
-	}*/
+	}
 	return (0);
 }
