@@ -17,6 +17,14 @@ int check_line(char **map, char *line)
 		my_putstr("Error: this line is out of range\n");
 		return (1);
 	}
+	for (int i = 0; map[my_getnbr(line)][i] != '\0'; i++) {
+		if (map[my_getnbr(line)][i] == '|')
+			return (0);
+		else if (map[my_getnbr(line)][i + 1] == '\0') {
+			my_putstr("Error: please select a line with matches\n");
+			return (1);
+		}
+	}
 	return (0);
 }
 
