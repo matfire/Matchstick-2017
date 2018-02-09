@@ -18,7 +18,12 @@ SRC	=		src/main.c \
 			src/my_getnbr.c
 
 CRIT_SRC	=	bonus/matches_on_line.c \
-				src/utils.c
+				bonus/matches_on_board.c \
+				bonus/is_number.c \
+				src/utils.c \
+				src/errors.c \
+				src/my_getnbr.c \
+				src/board.c
 
 CRIT_NAME	=	criterion
 
