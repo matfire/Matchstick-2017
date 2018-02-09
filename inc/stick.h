@@ -26,7 +26,7 @@ char *put_bars(int len, int start, int stop);
 void print_board(char **map);
 void my_putstr(char *str);
 void print_ia_moves(int line, int matches);
-void ai_turn(char **board, int max_matches);
+void ai_turn(char **board);
 void player_turn(char **map, int matches_nb);
 int my_put_nbr(int nb);
 void print_updated_game_board(char **tab, int line, int nb_matches);

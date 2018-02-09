@@ -17,11 +17,18 @@ SRC	=		src/main.c \
 			src/print_status.c \
 			src/my_getnbr.c
 
+CRIT_SRC	=	bonus/matches_on_line.c \
+				src/utils.c
+
+CRIT_NAME	=	criterion
+
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	matchstick
 
-CFLAGS	+=	-Wall -Wextra  -I./inc -g
+CFLAGS	+=	-Wall -Wextra -Werror -I./inc -g
+
+LDFLAGS = -lcriterion -lgcov --verbose -I./inc
 
 all	:	$(NAME)
 
@@ -35,3 +42,6 @@ fclean	:	clean
 			rm -f $(OBJ)
 
 re	:	fclean all
+
+test_run:			$(OBJ)
+		cc -o $(CRIT_NAME) $(CRIT_SRC) $(LDFLAGS)

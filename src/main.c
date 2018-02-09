@@ -21,7 +21,7 @@ int main(int ac, char **av)
 	player_turn(map, my_getnbr(av[2]));
 	if (check(map))
 		return (2);
-	ai_turn(map, my_getnbr(av[2]));
+	ai_turn(map);
 	if (check(map))
 		return (1);
 	}
