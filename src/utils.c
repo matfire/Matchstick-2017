@@ -43,11 +43,12 @@ int get_matches(char **board)
 
 int get_matches_on_line(char **board, int line)
 {
-	int matches;
+	int matches = 0;
 
 	for (int i = 0; board[line][i] != '\0'; i++) {
 		if (board[line][i] == '|')
 			matches++;
 	}
+	printf("matches : %d\n", matches);
 	return (matches);
 }

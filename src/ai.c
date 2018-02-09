@@ -10,30 +10,23 @@
 int generate_line(char **board)
 {
 	int len_board = board_len(board);
-	int res = (int)random() % len_board;
+	int res = (int)random() % (len_board - 1);
 
-	while (res >= len_board - 1 || res <= 1)
-		goto *13;
+	while (!(res >= 1 && res <= len_board - 1 ))
+		res = (int)random() % (len_board - 1);
+	if (get_matches_on_line(board, res) == 0)
+		generate_line(board);
+	printf("Line : %d\n", res);
 	return (res);
 }
 
 int generate_matches(char **board, int max_matches, int line)
 {
-	int res = (int)random() % get_matches_on_line(board, line);
+	int res = (int)random() % max_matches;
 
+	while (!(res >= 1 && res <= get_matches_on_line(board, line)) || res == 1)
+		res = (int)random() % get_matches_on_line(board, line);
 	return (res);
-}
-
-int check_correspondance(char **board, int matches, int line)
-{
-	int actual_matches = 0;
-	for (int i = 0; board[line][i] != '\0'; i++) {
-		if (board[line][i] == '|')
-			actual_matches++;
-	}
-	if (actual_matches >= matches)
-		return (1);
-	return (0);
 }
 
 void ai_turn(char **board, int max_matches)
