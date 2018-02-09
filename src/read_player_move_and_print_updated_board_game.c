@@ -20,6 +20,11 @@ void print_updated_game_board(char **tab, int line, int nb_matches)
 			deleted++;
 		}
 	}
+	my_putstr("Player removed ");
+	my_put_nbr(nb_matches);
+	my_putstr(" match(es) from line ");
+	my_put_nbr(line);
+	my_putstr("\n");
 	for (int i = 0; tab[i] != NULL ; i++) {
 		my_putstr(tab[i]);
 		my_putstr("\n");
