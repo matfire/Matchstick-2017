@@ -20,6 +20,7 @@ SRC	=		src/main.c \
 CRIT_SRC	=	bonus/matches_on_line.c \
 				bonus/matches_on_board.c \
 				bonus/is_number.c \
+				bonus/board_gen.c \
 				src/utils.c \
 				src/errors.c \
 				src/my_getnbr.c \
