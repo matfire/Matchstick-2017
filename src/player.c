@@ -90,10 +90,10 @@ void player_turn(char **map, int matches_nb)
 	}
 	my_putstr("Matches: ");
 	match = get_next_line(0);
-	while (check_matches(map, matches_nb, match, my_getnbr(line))) {
+	if (check_matches(map, matches_nb, match, my_getnbr(line))) {
 		free(match);
-		my_putstr("Matches: ");
-		match = get_next_line(0);
+		free(line);
+		player_turn(map, matches_nb);
 	}
 	print_player_move(my_getnbr(line), my_getnbr(match));
 	print_updated_game_board(map, my_getnbr(line), my_getnbr(match));

@@ -16,7 +16,6 @@ int generate_line(char **board)
 		res = (int)random() % (len_board - 1);
 	if (get_matches_on_line(board, res) == 0)
 		generate_line(board);
-	printf("Line : %d\n", res);
 	return (res);
 }
 

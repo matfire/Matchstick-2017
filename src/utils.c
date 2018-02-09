@@ -49,6 +49,5 @@ int get_matches_on_line(char **board, int line)
 		if (board[line][i] == '|')
 			matches++;
 	}
-	printf("matches : %d\n", matches);
 	return (matches);
 }
