@@ -21,7 +21,7 @@ char *put_bars(int len, int start, int stop)
 {
 	char *res;
 
-	res = malloc(sizeof(char) * (len + 3));
+	res = malloc(sizeof(char) * (len + 4));
 	res[0] = '*';
 	for (int i = 0; i < len + 1; i++) {
 		if (i >= start && i <= stop)

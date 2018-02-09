@@ -13,6 +13,10 @@ int check_line(char **map, char *line)
 	int i = 0;
 
 	for (; map[i] != NULL; i++);
+	if (is_number(line)) {
+		my_putstr("Error: please enter a positive number\n");
+		return (1);
+	}
 	if (my_getnbr(line) <= 0 || my_getnbr(line) > i) {
 		my_putstr("Error: this line is out of range\n");
 		return (1);
@@ -64,6 +68,15 @@ int check_matches(char **map, int matches_nb, char *matches, int line)
 	return (0);
 }
 
+void print_player_move(int line, int match)
+{
+	my_putstr("Player removed ");
+	my_put_nbr(match);
+	my_putstr(" match(es) from line ");
+	my_put_nbr(line);
+	my_putstr("\n");
+}
+
 void player_turn(char **map, int matches_nb)
 {
 	char *line;
@@ -82,5 +95,6 @@ void player_turn(char **map, int matches_nb)
 		my_putstr("Matches: ");
 		match = get_next_line(0);
 	}
+	print_player_move(my_getnbr(line), my_getnbr(match));
 	print_updated_game_board(map, my_getnbr(line), my_getnbr(match));
 }
