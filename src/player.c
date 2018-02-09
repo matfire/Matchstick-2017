@@ -13,7 +13,7 @@ int check_line(char **map, char *line)
 	int i = 0;
 
 	for (; map[i] != NULL; i++);
-	if (is_number(line)) {
+	if (is_number(line) || line == NULL) {
 		my_putstr("Error: please enter a positive number\n");
 		return (1);
 	}

@@ -46,8 +46,10 @@ clean	:
 
 fclean	:	clean
 			rm -f $(OBJ)
+			rm -f $(CRIT_NAME)
 
 re	:	fclean all
 
 test_run:			$(OBJ)
 		cc -o $(CRIT_NAME) $(CRIT_SRC) $(LDFLAGS)
+		./$(CRIT_NAME)
