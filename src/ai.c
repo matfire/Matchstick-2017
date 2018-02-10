@@ -35,12 +35,27 @@ int generate_matches(char **board, int line)
 	return (res);
 }
 
+int line_has_matches(char **board, int line, int matches)
+{
+	int matches_on_line = 0;
+
+	for (int i = 0; board[line][i] != '\0'; i++) {
+		if (board[line][i] == '|')
+			matches_on_line++;
+	}
+	if (matches > matches_on_line || matches == 0)
+		return (1);
+	return (0);
+}
+
 void ai_turn(char **board)
 {
 	int line = generate_line(board);
-	int matches_to_be_removed = generate_matches(board, line);
-
-	if (matches_to_be_removed == 0)
+	int matches_to_be_removed = 0;
+	
+	if ((matches_to_be_removed = generate_matches(board, line)) == 0)
+		ai_turn(board);
+	if (line_has_matches(board, line, matches_to_be_removed))
 		ai_turn(board);
 	print_ia_moves(line, matches_to_be_removed);
 	print_updated_game_board(board, line, matches_to_be_removed);
