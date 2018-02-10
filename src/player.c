@@ -77,13 +77,15 @@ void print_player_move(int line, int match)
 	my_putstr("\n");
 }
 
-void player_turn(char **map, int matches_nb)
+int player_turn(char **map, int matches_nb)
 {
 	char *line;
 	char *match;
 
 	my_putstr("Line: ");
 	line = get_next_line(0);
+	if (line == NULL)
+		return (1);
 	if (check_line(map, line)) {
 		free(line);
 		player_turn(map, matches_nb);
@@ -97,4 +99,5 @@ void player_turn(char **map, int matches_nb)
 	}
 	print_player_move(my_getnbr(line), my_getnbr(match));
 	print_updated_game_board(map, my_getnbr(line), my_getnbr(match));
+	return (0);
 }

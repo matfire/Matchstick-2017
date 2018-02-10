@@ -18,7 +18,8 @@ int main(int ac, char **av)
 	print_board(map);
 	srandom(time(NULL) + getpid());
 	while (1) {
-	player_turn(map, my_getnbr(av[2]));
+	if (player_turn(map, my_getnbr(av[2])))
+		break;
 	if (check(map))
 		return (2);
 	ai_turn(map);
