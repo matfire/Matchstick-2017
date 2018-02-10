@@ -18,13 +18,17 @@ int main(int ac, char **av)
 	print_board(map);
 	srandom(time(NULL) + getpid());
 	while (1) {
-	if (player_turn(map, my_getnbr(av[2])))
-		break;
-	if (check(map))
-		return (2);
-	ai_turn(map);
-	if (check(map))
-		return (1);
+		if (player_turn(map, my_getnbr(av[2])))
+			break;
+		if (check(map)) {
+			my_putstr("Better luck next time\n");
+			return (2);
+		}
+		ai_turn(map);
+		if (check(map)) {
+			my_putstr("I lost, but I will have my revenge\n");
+			return (1);
+		}
 	}
 	return (0);
 }
