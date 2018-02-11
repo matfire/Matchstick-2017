@@ -83,17 +83,19 @@ int player_turn(char **map, int matches_nb)
 	char *match;
 
 	my_putstr("Line: ");
-	line = get_next_line(0);
-	if (line == NULL)
+	if ((line = get_next_line(0)) == NULL) {
+		my_putstr("\n");
 		return (1);
+	}
 	if (check_line(map, line)) {
 		free(line);
 		player_turn(map, matches_nb);
 	}
 	my_putstr("Matches: ");
-	match = get_next_line(0);
-	if (match == NULL)
+	if ((match = get_next_line(0)) == NULL) {
+		my_putstr("\n");
 		return (1);
+	}
 	if (check_matches(map, matches_nb, match, my_getnbr(line))) {
 		free(match);
 		free(line);
