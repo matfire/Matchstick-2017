@@ -92,6 +92,8 @@ int player_turn(char **map, int matches_nb)
 	}
 	my_putstr("Matches: ");
 	match = get_next_line(0);
+	if (match == NULL)
+		return (1);
 	if (check_matches(map, matches_nb, match, my_getnbr(line))) {
 		free(match);
 		free(line);

@@ -15,8 +15,8 @@ int generate_line(char **board)
 
 	while (!(res >= 1 && res <= len_board - 1 ))
 		res = (int)random() % (len_board - 1);
-	if (get_matches_on_line(board, res) == 0)
-		generate_line(board);
+	while (get_matches_on_line(board, res) == 0)
+		res = (int)random() % (len_board - 1);
 	return (res);
 }
 
@@ -48,13 +48,28 @@ int line_has_matches(char **board, int line, int matches)
 	return (0);
 }
 
+int board_has_no_more_matches(char **board)
+{
+	for (int i = 0; board[i] != NULL; i++) {
+		if (line_has_matches(board, i, 1))
+			return (0);
+		printf("there are still matches on line %d\n", i);
+	}
+	return (1);
+}
+
 void ai_turn(char **board)
 {
 	int line = generate_line(board);
 	int matches_to_be_removed = 0;
-	
-	if ((matches_to_be_removed = generate_matches(board, line)) == 0)
-		ai_turn(board);
+
+	if (board_has_no_more_matches(board))
+		return;
+	if ((matches_to_be_removed = generate_matches(board, line)) == 0) {
+		print_ia_moves(line, 1);
+		print_updated_game_board(board, line, 1);
+		return;
+		}
 	if (line_has_matches(board, line, matches_to_be_removed))
 		ai_turn(board);
 	print_ia_moves(line, matches_to_be_removed);
